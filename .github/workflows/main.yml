@@ -1,0 +1,25 @@
+name: Nixpacks Test
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Nix
+        run: |
+          sh <(curl -sSL https://nixpacks.com/install.sh | bash) --no-daemon
+
+      - name: Run Nixpacks
+        run: |
+          nixpacks build . --name test
