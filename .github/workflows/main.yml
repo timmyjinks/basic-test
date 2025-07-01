@@ -17,9 +17,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Set up Nix
-        run: |
-          sh <(curl -sSL https://nixpacks.com/install.sh | bash) --no-daemon
+        run: sh <(curl -sSL https://nixpacks.com/install.sh | bash) --no-daemon
 
       - name: Run Nixpacks
-        run: |
-          nixpacks build . --name test
+        run: nixpacks build . --name test
